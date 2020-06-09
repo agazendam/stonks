@@ -5,6 +5,7 @@ if(!is.na(args[1])) { #Skip if run locally
   install.packages("tidyquant")
   install.packages("googledrive")
   install.packages("bizdays")
+  install.packages("RQuantLib")
 }
 
 library(tidyquant)
