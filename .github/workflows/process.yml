@@ -1,0 +1,26 @@
+  name: process
+
+  on:
+    push:
+#    schedule:
+#      - cron: "*/5 * * * *"
+
+  jobs:
+    build:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout
+          id: checkout
+          uses: actions/checkout@v2
+          
+        - name: Decrypt
+          id: decrypt
+          run: ./.github/scripts/decrypt_secret.sh
+          env:
+            DRIVE_SECRET_PASSPHRASE: ${{ secrets.DRIVE_SECRET_PASSPHRASE }}
+
+        - name: Process
+          id: process
+          uses: ./.github/actions/process-action
+          env:
+            TIINGO_API_KEY: ${{ secrets.TIINGO_API_KEY }}
