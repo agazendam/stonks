@@ -4,14 +4,14 @@ args = commandArgs(trailingOnly=TRUE)
 if(!is.na(args[1])) { #Skip if run locally
   install.packages("tidyquant")
   install.packages("googledrive")
-#  install.packages("bizdays")
+  install.packages("bizdays")
   install.packages("RQuantLib")
 }
 
 library("tidyquant")
 library("tidyverse")
 library("googledrive")
-#library("bizdays")
+library("bizdays")
 
 # test if there is at least one argument: if not, return an error
 if (length(args)==0) {
