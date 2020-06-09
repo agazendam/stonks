@@ -18,6 +18,9 @@
           run: ./.github/scripts/decrypt_secret.sh
           env:
             DRIVE_SECRET_PASSPHRASE: ${{ secrets.DRIVE_SECRET_PASSPHRASE }}
+            
+        - name: Test printing your secret (Remove this step in production)
+          run: ls -la $HOME/.secrets
 
         - name: Process
           id: process
