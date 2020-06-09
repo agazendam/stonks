@@ -1,0 +1,3 @@
+# firstrade
+# firstrade
+# stonks
