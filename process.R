@@ -12,6 +12,7 @@ library("tidyquant")
 library("tidyverse")
 library("googledrive")
 library("bizdays")
+library("RQuantLib")
 
 # test if there is at least one argument: if not, return an error
 if (length(args)==0) {
