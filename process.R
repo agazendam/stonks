@@ -4,15 +4,13 @@ args = commandArgs(trailingOnly=TRUE)
 if(!is.na(args[1])) { #Skip if run locally
   install.packages("tidyquant")
   install.packages("googledrive")
-  install.packages("bizdays")
-  install.packages("RQuantLib")
+  install.packages("timeDate")
 }
 
 library(tidyquant)
 library(tidyverse)
 library(googledrive)
-library(bizdays)
-library(RQuantLib)
+library(timeDate)
 
 # test if there is at least one argument: if not, return an error
 if (length(args)==0) {
@@ -35,7 +33,7 @@ print("Setting date range...")
 start <- as_date("2017-04-01") # 1 April 2017 seems to be the start of the minutely data on iex
 end   <- as_date(Sys.Date()+1)
 
-load_quantlib_calendars('UnitedStates/NYSE', from=start, to=end)
+load_rmetrics_calendars(year(start):year(end))
 
 for (symbol in sample(symbols,length(symbols))) {
   print(symbol)
@@ -56,7 +54,7 @@ for (symbol in sample(symbols,length(symbols))) {
       }
       )
     }
-    if (following(as_date(max(tiingo.iex.day$date)+days(1)), "QuantLib/UnitedStates/NYSE") < (end-1)) {
+    if (following(as_date(max(tiingo.iex.day$date)+days(1)), "Rmetrics/NYSE") < (end-1)) {
       print("Downloading daily data from Tiingo...")
       theDate <- max(start,as_date(max(tiingo.iex.day$date)))
       while (theDate < end)
@@ -89,7 +87,7 @@ for (symbol in sample(symbols,length(symbols))) {
       }
       )
     }
-    if (following(as_date(max(tiingo.iex.hour$date)+days(1)), "QuantLib/UnitedStates/NYSE") < (end-1)) {
+    if (following(as_date(max(tiingo.iex.hour$date)+days(1)), "Rmetrics/NYSE") < (end-1)) {
       print("Downloading hourly data from Tiingo...")
       theDate <- max(start,as_date(max(tiingo.iex.hour$date)))
       while (theDate < end)
@@ -131,7 +129,7 @@ for (symbol in sample(symbols,length(symbols))) {
       }
       )
     }
-    if (following(as_date(max(tiingo.iex.minute$date)+days(1)), "QuantLib/UnitedStates/NYSE") < (end-1)) {
+    if (following(as_date(max(tiingo.iex.minute$date)+days(1)), "Rmetrics/NYSE") < (end-1)) {
       print("Downloading minutely data from Tiingo...")
       theDate <- max(start,as_date(max(tiingo.iex.minute$date)))
       while (theDate < end)
