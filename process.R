@@ -37,7 +37,8 @@ end   <- as_date(Sys.Date()+1)
 
 load_rmetrics_calendars(year(start):year(end))
 
-for (symbol in sample(symbols,length(symbols))) {
+#for (symbol in sample(symbols,length(symbols))) {
+for (symbol in symbols) {
   print(symbol)
 
   print("Declaring variables...")
