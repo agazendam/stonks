@@ -138,8 +138,8 @@ for (symbol in symbols) {
       while (theDate < end)
       {
         print(paste0(theDate," to ",min(end,theDate %m+% months(1))))
-        #try(tiingo.iex.minute <- bind_rows(tiingo.iex.minute,tq_get(symbol, get = "tiingo.iex", from = theDate, to = min(end,theDate %m+% months(1)), resample_frequency = "1min")))
-        print("Minutely downloads commented out to temporarily conserve Tiingo API limits")
+        try(tiingo.iex.minute <- bind_rows(tiingo.iex.minute,tq_get(symbol, get = "tiingo.iex", from = theDate, to = min(end,theDate %m+% months(1)), resample_frequency = "1min")))
+        #print("Minutely downloads commented out to temporarily conserve Tiingo API limits")
         theDate <- theDate %m+% months(1)
       }
       if (!is_empty(tiingo.iex.minute)) {
