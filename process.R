@@ -24,7 +24,7 @@ if (length(args)==0) {
 drive_auth(path = ".secrets/my-project-92901-skicka-8a920f029b4b.json")
 drive_empty_trash()
 
-print("Setting symbols....")
+print("Setting symbols...")
 if(!is.na(args[1])) { #Skip if run locally
   drive_download("00_stocks", type = "csv", overwrite = TRUE, verbose = FALSE)
   symbols <- read_csv("00_stocks.csv") %>% select(Symbols) %>% drop_na() %>% distinct() %>% pull(Symbols)
