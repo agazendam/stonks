@@ -29,7 +29,7 @@ if(!is.na(args[1])) { #Skip if run locally
   drive_download("00_stocks", type = "csv", overwrite = TRUE, verbose = FALSE)
   symbols <- read_csv("00_stocks.csv") %>% select(Symbols) %>% drop_na() %>% distinct() %>% pull(Symbols)
   unlink("00_stocks.csv")
-} else symbols <- c("ABT")
+} else symbols <- c("AMD")
 
 print("Setting date range...")
 start <- as_date("2017-04-01") # 1 April 2017 seems to be the start of the minutely data on iex
@@ -57,7 +57,7 @@ for (symbol in symbols) {
       }
       )
     }
-    if (following(as_date(max(tiingo.iex.day$date)+days(1)), "Rmetrics/NYSE") < (end-1)) {
+    if (tryCatch({suppressWarnings(following(as_date(max(tiingo.iex.day$date)+days(1)), "Rmetrics/NYSE"))},error=function(cond) {return(0)}) < (end-1)) {
       print("Downloading daily data from Tiingo...")
       theDate <- max(start,as_date(max(tiingo.iex.day$date)))
       while (theDate < end)
@@ -90,7 +90,7 @@ for (symbol in symbols) {
       }
       )
     }
-    if (following(as_date(max(tiingo.iex.hour$date)+days(1)), "Rmetrics/NYSE") < (end-1)) {
+    if (tryCatch({suppressWarnings(following(as_date(max(tiingo.iex.hour$date)+days(1)), "Rmetrics/NYSE"))},error=function(cond) {return(0)}) < (end-1)) {
       print("Downloading hourly data from Tiingo...")
       theDate <- max(start,as_date(max(tiingo.iex.hour$date)))
       while (theDate < end)
@@ -132,7 +132,7 @@ for (symbol in symbols) {
       }
       )
     }
-    if (following(as_date(max(tiingo.iex.minute$date)+days(1)), "Rmetrics/NYSE") < (end-1)) {
+    if (tryCatch({suppressWarnings(following(as_date(max(tiingo.iex.minute$date)+days(1)), "Rmetrics/NYSE"))},error=function(cond) {return(0)}) < (end-1)) {
       print("Downloading minutely data from Tiingo...")
       theDate <- max(start,as_date(max(tiingo.iex.minute$date)))
       while (theDate < end)
