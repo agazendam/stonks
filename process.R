@@ -31,7 +31,7 @@ if(!is.na(args[1])) { #Skip if run locally
   unlink("00_stocks.csv")
 } else symbols <- c("AMD")
 
-print("Setting date range...")
+print("Setting date range....")
 start <- as_date("2017-04-01") # 1 April 2017 seems to be the start of the minutely data on iex
 end   <- as_date(Sys.Date()+1)
 
