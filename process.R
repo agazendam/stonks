@@ -33,12 +33,12 @@ if(!is.na(args[1])) { #Skip if run locally
 
 print("Setting date range....")
 #start <- as_date("2017-04-01") # 1 April 2017 seems to be the start of the minutely data on iex
-start_daily <- as_date("2017-01-03")
+start_daily <- as_date("1900-01-01")
 start_hourly <- as_date("2017-01-03")
 start_minutely <- as_date("2017-04-01")
 end   <- as_date(Sys.Date()+1)
 
-load_rmetrics_calendars(year(start):year(end))
+load_rmetrics_calendars(year(start_daily):year(end))
 
 #for (symbol in sample(symbols,length(symbols))) {
 for (symbol in symbols) {
