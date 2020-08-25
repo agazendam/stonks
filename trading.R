@@ -1,12 +1,13 @@
 #!/usr/bin/env Rscript
 args = commandArgs(trailingOnly=TRUE)
 
-if(!is.na(args[1])) { #Skip if run locally
+#if(!is.na(args[1])) { #Skip if run locally
   install.packages("tidyverse")
+  install.packages("bizdays")
   install.packages("lubridate")
-  #install.packages("tictoc")
+  install.packages("tictoc")
   install.packages("googledrive")
-}
+#}
 
 #library(rsconnect)
 #library(shiny)
@@ -15,10 +16,10 @@ if(!is.na(args[1])) { #Skip if run locally
 #library(htmlwidgets)
 library(tidyverse)
 #library(RQuantLib)
-#library(bizdays)
+library(bizdays)
 library(lubridate)
 #library(tidyquant)
-#library(tictoc)
+library(tictoc)
 library(googledrive)
 
 drive_auth(path = ".secrets/my-project-92901-skicka-8a920f029b4b.json")
