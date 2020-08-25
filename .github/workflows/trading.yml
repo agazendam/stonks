@@ -2,8 +2,7 @@
 
   on:
     push:
-    schedule:
-      
+    
   jobs:
     build:
       runs-on: ubuntu-latest
