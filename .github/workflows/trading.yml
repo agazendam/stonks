@@ -3,8 +3,7 @@
   on:
     push:
     schedule:
-      #- cron: "*/20 * * * *"
-
+      
   jobs:
     build:
       runs-on: ubuntu-latest
