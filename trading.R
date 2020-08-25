@@ -3,7 +3,7 @@ args = commandArgs(trailingOnly=TRUE)
 
 if(!is.na(args[1])) { #Skip if run locally
   install.packages("tidyverse")
-  install.packages("bizdays")
+  install.packages("timeDate")
   install.packages("lubridate")
   install.packages("tictoc")
   install.packages("googledrive")
