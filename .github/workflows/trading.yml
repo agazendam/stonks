@@ -1,0 +1,25 @@
+  name: trading
+
+  on:
+    push:
+    schedule:
+      #- cron: "*/20 * * * *"
+
+  jobs:
+    build:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout
+          id: checkout
+          uses: actions/checkout@v2
+          
+        - name: Decrypt
+          id: decrypt
+          run: ./.github/scripts/decrypt_secret.sh
+          env:
+            DRIVE_SECRET_PASSPHRASE: ${{ secrets.DRIVE_SECRET_PASSPHRASE }}
+
+        - name: Trading
+          id: trading
+          uses: ./.github/actions/trading-action
+          
