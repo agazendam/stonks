@@ -4,7 +4,7 @@ args = commandArgs(trailingOnly=TRUE)
 if(!is.na(args[1])) { #Skip if run locally
   install.packages("tidyverse")
   install.packages("lubridate")
-  install.packages("tictoc")
+  #install.packages("tictoc")
   install.packages("googledrive")
 }
 
@@ -18,7 +18,7 @@ library(tidyverse)
 #library(bizdays)
 library(lubridate)
 #library(tidyquant)
-library(tictoc)
+#library(tictoc)
 library(googledrive)
 
 drive_auth(path = ".secrets/my-project-92901-skicka-8a920f029b4b.json")
@@ -51,7 +51,7 @@ buy_trigger_max <- 0.03
 buy_trigger_step <- 0.001#0.0025
 window_size <- 1000000#3000
 
-tic()
+#tic()
 for (symbol in symbols) {
   print(symbol)
   
@@ -220,4 +220,4 @@ for (symbol in symbols) {
 
 drive_empty_trash()
 
-toc()
+#toc()
