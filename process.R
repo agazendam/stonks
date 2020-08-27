@@ -23,6 +23,7 @@ if (length(args)==0) {
 
 drive_auth(path = ".secrets/my-project-92901-skicka-8a920f029b4b.json")
 drive_empty_trash()
+#Use drive_rm("UDOW.minute.csv") from CLI to manually delete files from Drive
 
 print("Setting symbols...")
 if(!is.na(args[1])) { #Skip if run locally
