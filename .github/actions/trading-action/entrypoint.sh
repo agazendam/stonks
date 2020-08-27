@@ -13,4 +13,4 @@ apt-get update
 
 #apt-get install -y -qq r-cran-rquantlib
 
-Rscript trading.R
+Rscript trading.R hello
