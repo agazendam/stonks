@@ -32,7 +32,7 @@ if(!is.na(args[1])) { #Skip if run locally
 } else symbols <- c("QQQ")
 
 print("Setting date range....")
-#start <- as_date("2017-04-01") # 1 April 2017 seems to be the start of the minutely data on iex
+##start <- as_date("2017-04-01") # 1 April 2017 seems to be the start of the minutely data on iex
 start_daily <- as_date("1900-01-01")
 start_hourly <- as_date("2017-01-03")
 start_minutely <- as_date("2017-04-01")
